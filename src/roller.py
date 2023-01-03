@@ -32,7 +32,7 @@ def roll_gen(dice, take):
 
         result += list[-1]
 
-    return (list, result)
+    return [list, result]
 
 
 def roller(content):
@@ -67,9 +67,10 @@ def roller(content):
             skill = numbers[1]
 
         res = roll_gen(roll, take)
-        print(res)
 
-        result = f"test"
+        result = (
+            f"Rolled: {res[0]}, Taken: {take} Skill: {skill} **Result: {res[1] + skill}**"
+        )
         return result
 
     except:
