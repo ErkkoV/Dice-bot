@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+    noppa-botti:
+        container_name: botti-container
+        build: .
+        restart: unless-stopped
+        ports:
+            - "8000:8000"
