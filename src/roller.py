@@ -68,6 +68,9 @@ def roller(content):
 
         res = roll_gen(roll, take)
 
+        if not res["+"]:
+            skill = -skill
+
         result = (
             f"Rolled: {res[0]}, Taken: {take} Skill: {skill} **Result: {res[1] + skill}**"
         )
