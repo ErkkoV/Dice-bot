@@ -2,16 +2,10 @@
 
 The bot rolls dices in unique roleplaying-system.
 
-## Installion
+## Installation
 
-```python -m venv env
+`python -m venv env`
 
-```
+`env\Scripts\Activate`
 
-```env\Scripts\Activate
-
-```
-
-```pip install -r requirements.txt
-
-```
+`pip install -r requirements.txt`
