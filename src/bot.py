@@ -33,8 +33,6 @@ async def on_message(message):
 
     if message.content.startswith("/roll"):
         reply = roller(message.content)
-        print(message.author.name)
-
         await message.channel.send(message.author.name + " " + reply)
 
     if message.content.startswith("/help roll"):
