@@ -84,8 +84,7 @@ def roller(content):
             res_crit = abs(int(res_level))
             if res_crit > 0:
                 success += "critical "
-                success += res_crit
-            success += "\n"
+                success += str(res_crit)
             diff_sentence = (
                 f"Against difficulty [{difficulty}] Result is: **{success}**\n"
             )
@@ -95,15 +94,8 @@ def roller(content):
             reason = content.split('"')[1].split('"')[0]
             reason_sentence = reason
 
-        result = f"""
-            rolled: {res[0]}, Taken: {take} Skill: {skill} **Result: {res[1] + skill}**\n
-            {diff_sentence}
-            {reason_sentence}
-            """
+        result = f"rolled: {res[0]}, Taken: {take} Skill: {skill} **Result: {res[1] + skill}**\n{diff_sentence}{reason_sentence}"
         return result
 
     except:
-        return """
-            Type roll as `r3t2 + 3 [25] "trying to sit down"`\n
-            Or type `/help roll` for help
-            """
+        return """Type roll as `/roll r3t2 + 3 [25] "trying to sit down"`\nOr type `/help roll` for help"""
