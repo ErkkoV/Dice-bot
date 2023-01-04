@@ -35,5 +35,21 @@ async def on_message(message):
         reply = roller(message.content)
         await message.channel.send(reply)
 
+    if message.content.startswith("/help roll"):
+        await message.channel.send(
+            """
+        Insert roll as: \n 
+        `4d + 5` Roll 3 dice, take 2, add 5 skill\n
+        `4n + 5` Roll 3 dice, take 2, add 5 skill\n
+        `-4n + 5` Roll 6 dice, worst 1, add 5 skill\n
+        `r3t2 + 3` Roll 3 dice, take 2, add 3 skill\n
+        `h3o2 + 5` Roll 3 dice, take 2, add 3 skill\n
+        `l4 + 5` Roll 4 dice, worst 1, add 3 skill\n
+        add `[number]` to add diffciculty to the roll\n
+        add `"reason"` to add reason to the roll\n
+        `r3t2 + 3 [25] "trying to sit down"`
+        """
+        )
+
 
 client.run(DISCORD_TOKEN, log_handler=handler)

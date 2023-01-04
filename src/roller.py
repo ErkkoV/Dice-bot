@@ -71,12 +71,39 @@ def roller(content):
         if "+" not in content:
             skill = -skill
 
-        reason = ""
+        difficulty = 0
+        diff_sentence = ""
         if "[" in content and "]" in content:
-            reason = content.split("[")[1].split("]")[0]
+            difficulty = int(content.split("[")[1].split("]")[0])
+            success = ""
+            res_level = ((res[1] + skill) - difficulty) / 5
+            if res_level > 0:
+                success += "Success "
+            else:
+                success += "Failure "
+            res_crit = abs(int(res_level))
+            if res_crit > 0:
+                success += "critical "
+                success += res_crit
+            success += "\n"
+            diff_sentence = (
+                f"Against difficulty [{difficulty}] Result is: **{success}**\n"
+            )
 
-        result = f"[{reason}] rolled: {res[0]}, Taken: {take} Skill: {skill} **Result: {res[1] + skill}**"
+        reason_sentence = ""
+        if '"' in content:
+            reason = content.split('"')[1].split('"')[0]
+            reason_sentence = reason
+
+        result = f"""
+            rolled: {res[0]}, Taken: {take} Skill: {skill} **Result: {res[1] + skill}**\n
+            {diff_sentence}
+            {reason_sentence}
+            """
         return result
 
     except:
-        return "Insert roll as either: 4d + 5 or 4n + 5 or -4n + 5 or r3t2 + 3 or h3o2 + 5 or l4 + 5"
+        return """
+            Type roll as `r3t2 + 3 [25] "trying to sit down"`\n
+            Or type `/help roll` for help
+            """
