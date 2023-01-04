@@ -71,7 +71,11 @@ def roller(content):
         if "+" not in content:
             skill = -skill
 
-        result = f"Rolled: {res[0]}, Taken: {take} Skill: {skill} **Result: {res[1] + skill}**"
+        reason = ""
+        if "[" in content and "]" in content:
+            reason = content.split("[")[1].split("]")[0]
+
+        result = f"[{reason}] rolled: {res[0]}, Taken: {take} Skill: {skill} **Result: {res[1] + skill}**"
         return result
 
     except:
