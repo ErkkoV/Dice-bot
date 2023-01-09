@@ -117,7 +117,7 @@ def probber(content):
             if not attack:
                 attack_sentence = ""
 
-            return defence_sentence + attack_sentence
+            return f"`{content.split('prob')[1]}` Probabilities:\n```{defence_sentence}{attack_sentence}```"
 
         else:
             print("else")
@@ -129,9 +129,11 @@ def probber(content):
                 print(numbers)
                 res = prob_calc(numbers[0], numbers[1])
 
-            res_sentence = "Prob Array:\n"
+            res_sentence = f"`{content.split('prob')[1]}` Probability Array:\n```"
             for each in sorted(res.keys(), reverse=True):
                 res_sentence += f"{each}: {round(res[each]/100, 2)}% \n"
+
+            res_sentence += "```"
 
             return res_sentence
 
