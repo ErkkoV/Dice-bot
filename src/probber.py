@@ -96,23 +96,23 @@ def probber(content):
 
             print(res[0])
 
-            defence_sentence = f"\nDefender Success change: {res[0]}\nDefender Failure change: {100 - res[0]}\n"
-            attack_sentence = f"\nAttacker Success change: {100 - res[0]}\nAttacker Failure change: {res[0]}\n"
+            defence_sentence = f"\nDefender Success change: {res[0]}\nDefender Failure change: {100 - res[0]}%\n"
+            attack_sentence = f"\nAttacker Success change: {100 - res[0]}\nAttacker Failure change: {res[0]}%\n"
 
             for key in res:
                 if int(key) > 0:
                     defence_sentence = (
-                        f"\nDefender Crit Success {abs(int(key/5))} change: {res[key]}"
+                        f"\nDefender Crit Success {abs(int(key/5))} change: {res[key]}%"
                         + defence_sentence
                     )
                     attack_sentence += (
-                        f"Attacker Crit Failure {abs(int(key/5))} change: {res[key]}\n"
+                        f"Attacker Crit Failure {abs(int(key/5))} change: {res[key]}%\n"
                     )
 
                 elif int(key) < 0:
-                    defence_sentence += f"Defender Crit Failure {abs(int(key/5))} change: {100 - res[key]}\n"
+                    defence_sentence += f"Defender Crit Failure {abs(int(key/5))} change: {100 - res[key]}%\n"
                     attack_sentence = (
-                        f"\nAttacker Crit Success {abs(int(key/5))} change: {100 - res[key]}"
+                        f"\nAttacker Crit Success {abs(int(key/5))} change: {100 - res[key]}%"
                         + attack_sentence
                     )
 
@@ -133,7 +133,7 @@ def probber(content):
 
             res_sentence = "Prob Array:\n"
             for each in sorted(res.keys(), reverse=True):
-                res_sentence += f"{each}: {res[each]/100} \n"
+                res_sentence += f"{each}: {res[each]/100}% \n"
 
             return res_sentence
 
