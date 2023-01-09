@@ -96,8 +96,8 @@ def probber(content):
 
             print(res[0])
 
-            defence_sentence = f"\nDefender Success change: {res[0]}%\nDefender Failure change: {round(100 - res[0], 2)}%\n"
-            attack_sentence = f"\nAttacker Success change: {100 - res[0]}%\nAttacker Failure change: {round(res[0], 2)}%\n"
+            defence_sentence = f"\nDefender Success change: {round(res[0], 2)}%\nDefender Failure change: {round(100 - res[0], 2)}%\n"
+            attack_sentence = f"\nAttacker Success change: {round(100 - res[0], 2)}%\nAttacker Failure change: {round(res[0], 2)}%\n"
 
             for key in res:
                 if int(key) > 0:
