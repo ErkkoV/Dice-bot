@@ -20,7 +20,7 @@ def roll_gen(dice, take):
                 allOnes = False
 
         if allOnes:
-            result = len(list) - 5
+            result = take - 5
         else:
             for x in range(take):
                 result += list[x]
