@@ -25,8 +25,10 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith("/info"):
-        await message.channel.send("Avaivable Commands: \n /coffee \n /roll")
+    if message.content.startswith("/info") and len(message.content > 7):
+        await message.channel.send(
+            "Avaivable Commands: \n `/coffee` `/roll` `/prob` \n`/info roll` `/info probs`"
+        )
 
     if message.content.startswith("/coffee"):
         await message.channel.send("ToniPal should drink more coffee.")
@@ -35,7 +37,11 @@ async def on_message(message):
         reply = roller(message.content)
         await message.channel.send(message.author.name + " " + reply)
 
-    if message.content.startswith("/help roll"):
+    if message.content.startswith("/prob"):
+        reply = roller(message.content)
+        await message.channel.send(message.author.name + " " + reply)
+
+    if message.content.startswith("/info roll"):
         await message.channel.send(
             """
 Insert roll as: 
@@ -48,6 +54,18 @@ Insert roll as:
 add `[number]` to add diffciculty to the roll
 add `"reason"` to add reason to the roll
 `/roll r3t2 + 3 [25] "trying to sit down"`
+"""
+        )
+
+    if message.content.startswith("/info prob"):
+        await message.channel.send(
+            """
+Insert prob as: 
+`/prob r4t3 + 15 vs r3t3 +7` or
+`/prob h4o3 + 15 vs h3o3 +7` or
+`/prob h4o3 + 15 vs [30]` or
+`/prob h4o3 + 15
+Syntax is `Defence vs Attack`
 """
         )
 
