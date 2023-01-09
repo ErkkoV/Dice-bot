@@ -4,6 +4,7 @@ import os
 import discord
 from dotenv import load_dotenv
 
+from probber import probber
 from roller import roller
 
 load_dotenv()
@@ -26,7 +27,10 @@ async def on_message(message):
         return
 
     if message.content.startswith("/info"):
-        await message.channel.send("Avaivable Commands: \n /coffee \n /roll")
+        if not "prob" in message.content and not "roll" in message.content:
+            await message.channel.send(
+                "Avaivable Commands: \n `/coffee` `/roll` `/prob` \n`/info roll` `/info probs`"
+            )
 
     if message.content.startswith("/coffee"):
         await message.channel.send("ToniPal should drink more coffee.")
@@ -35,7 +39,11 @@ async def on_message(message):
         reply = roller(message.content)
         await message.channel.send(message.author.name + " " + reply)
 
-    if message.content.startswith("/help roll"):
+    if message.content.startswith("/prob"):
+        reply = probber(message.content)
+        await message.channel.send(message.author.name + " " + reply)
+
+    if message.content.startswith("/info roll"):
         await message.channel.send(
             """
 Insert roll as: 
@@ -48,6 +56,19 @@ Insert roll as:
 add `[number]` to add diffciculty to the roll
 add `"reason"` to add reason to the roll
 `/roll r3t2 + 3 [25] "trying to sit down"`
+"""
+        )
+
+    if message.content.startswith("/info prob"):
+        await message.channel.send(
+            """
+Probability calculator simulates 10000 rolls to calculate the probability.
+Insert prob as: 
+`/prob r4t3 + 15 vs r3t3 +7` or
+`/prob h4o3 + 15 vs l6 +7` or
+`/prob h4o3 + 15 vs [30]` or
+`/prob h4o3 + 15
+Syntax is `Defence vs Attack`
 """
         )
 

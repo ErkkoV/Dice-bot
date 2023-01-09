@@ -77,7 +77,7 @@ def roller(content):
             difficulty = int(content.split("[")[1].split("]")[0])
             success = ""
             res_level = ((res[1] + skill) - difficulty) / 5
-            if res_level > 0:
+            if res_level >= 0:
                 success += "Success "
             else:
                 success += "Failure "
@@ -98,4 +98,4 @@ def roller(content):
         return result
 
     except:
-        return """Type roll as `/roll r3t2 + 3 [25] "trying to sit down"`\nOr type `/help roll` for help"""
+        return """Type roll as `/roll r3t2 + 3 [25] "trying to sit down"`\nOr type `/help prob` for correct syntax"""
