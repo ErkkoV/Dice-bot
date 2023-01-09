@@ -4,6 +4,7 @@ import os
 import discord
 from dotenv import load_dotenv
 
+from probber import probber
 from roller import roller
 
 load_dotenv()
@@ -38,7 +39,7 @@ async def on_message(message):
         await message.channel.send(message.author.name + " " + reply)
 
     if message.content.startswith("/prob"):
-        reply = roller(message.content)
+        reply = probber(message.content)
         await message.channel.send(message.author.name + " " + reply)
 
     if message.content.startswith("/info roll"):
@@ -60,9 +61,10 @@ add `"reason"` to add reason to the roll
     if message.content.startswith("/info prob"):
         await message.channel.send(
             """
+Probability calculator simulates 10000 rolls to calculate the probability.
 Insert prob as: 
 `/prob r4t3 + 15 vs r3t3 +7` or
-`/prob h4o3 + 15 vs h3o3 +7` or
+`/prob h4o3 + 15 vs l6 +7` or
 `/prob h4o3 + 15 vs [30]` or
 `/prob h4o3 + 15
 Syntax is `Defence vs Attack`
