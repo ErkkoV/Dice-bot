@@ -26,10 +26,11 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith("/info") and len(message.content > 7):
-        await message.channel.send(
-            "Avaivable Commands: \n `/coffee` `/roll` `/prob` \n`/info roll` `/info probs`"
-        )
+    if message.content.startswith("/info"):
+        if not "prob" in message.content and not "roll" in message.content:
+            await message.channel.send(
+                "Avaivable Commands: \n `/coffee` `/roll` `/prob` \n`/info roll` `/info probs`"
+            )
 
     if message.content.startswith("/coffee"):
         await message.channel.send("ToniPal should drink more coffee.")
